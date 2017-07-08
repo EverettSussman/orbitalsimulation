@@ -1,5 +1,7 @@
 "use strict";
 
+// Helper Functions
+
 function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
 }
@@ -69,6 +71,8 @@ $(document).ready(function() {
 		//test.prettyPrint;
 	};
 
+	// Control buttons
+
 	$("#start").click(function () {
 		console.log("Clicked!");
 
@@ -86,6 +90,22 @@ $(document).ready(function() {
 			body.revert();
 		});
 	});
+
+	$('#pause').click(function () {
+		console.log("Pause clicked!");
+		clearInterval(animator);
+		animator = null;
+	});
+
+	$('#resume').click(function () {
+		console.log("Resume clicked!");
+
+		if (animator == null) {
+			animator = window.setInterval(draw, rest);
+		};
+	});
+
+
 
 });
 
